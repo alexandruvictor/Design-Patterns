@@ -15,21 +15,24 @@ public:
 
 class Circle : public Shape {
 public:
-    void draw() const override {
+    void draw() const override 
+    {
         std::cout << "Drawing Circle" << std::endl;
     }
 };
 
 class Square : public Shape {
 public:
-    void draw() const override {
+    void draw() const override 
+    {
         std::cout << "Drawing Square" << std::endl;
     }
 };
 
 class Rectangle : public Shape {
 public:
-    void draw() const override {
+    void draw() const override
+    {
         std::cout << "Drawing Rectangle" << std::endl;
     }
 };
@@ -40,13 +43,16 @@ class ShapeFactory {
 public:
     // Factory method that creates and returns the appropriate shape
     static std::shared_ptr<Shape> createShape(const std::string& shapeType) {
-        if (shapeType == "circle") {
+        if (shapeType == "circle") 
+        {
             return std::make_shared<Circle>();
         } 
-        else if (shapeType == "square") {
+        else if (shapeType == "square") 
+        {
             return std::make_shared<Square>();
         } 
-        else if (shapeType == "rectangle") {
+        else if (shapeType == "rectangle") 
+        {
             return std::make_shared<Rectangle>();
         }
         
@@ -74,8 +80,11 @@ int main() {
     // Create shapes from different inputs
     std::string shapes[] = {"circle", "square", "rectangle", "triangle"};
     for (const auto& shapeType : shapes) {
+        
         auto shape = ShapeFactory::createShape(shapeType);
-        if (shape) {
+        
+        if (shape) 
+        {
             shape->draw();
         }
     }

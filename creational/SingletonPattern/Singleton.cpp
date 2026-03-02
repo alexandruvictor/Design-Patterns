@@ -5,12 +5,14 @@
 class Singleton {
 private:
     // Private constructor - prevents direct instantiation
-    Singleton() {
+    Singleton() 
+    {
         std::cout << "Singleton instance created!" << std::endl;
     }
 
     // Private destructor
-    ~Singleton() {
+    ~Singleton() 
+    {
         std::cout << "Singleton instance destroyed!" << std::endl;
     }
 
@@ -57,6 +59,7 @@ private:
 
 // ===== Example Usage =====
 int main() {
+    
     std::cout << "--- Singleton Pattern Demo ---\n" << std::endl;
 
     // Get instance - constructor is called only once
