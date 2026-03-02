@@ -2,122 +2,68 @@
 
 A comprehensive collection of Design Pattern implementations in C++.
 
-## Creational Patterns
+Directory layout (implemented examples):
 
-Creational design patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.
+- `CreationalDesignPatterns/`
+  - `SingletonPattern/Singleton.cpp`
+  - `FactoryPattern/Factory.cpp`
+  - `BuilderPattern/Builder.cpp`
 
-### 1. Singleton Pattern
-**Location:** `creational/SingletonPattern/singleton.cpp`
+- `StructuralDesignPatterns/`
+  - `DecoratorPattern/Decorator.cpp`
+  - `AdapterPattern/Adapter.cpp`
+  - `ProxyPattern/Proxy.cpp`
 
-**Purpose:** Ensures that a class has only one instance and provides a global point of access to it.
+- `BehavioralDesignPatterns/`
+  - `ObserverPattern/Observer.cpp`
+  - `StrategyPattern/Strategy.cpp`
 
-**Key Features:**
-- Private constructor prevents direct instantiation
-- Static method `getInstance()` returns the unique instance
-- Thread-safe using Meyers' Singleton (static local variable)
-- Copy/move constructors and assignment operators are deleted
+Summary of categories
 
-**Use Cases:**
-- Database connection pools
-- Logger instances
-- Configuration managers
-- Resource managers (file handles, etc.)
+- Creational Patterns: control object creation (e.g., Singleton, Factory, Builder)
+- Structural Patterns: compose objects and add responsibilities (e.g., Adapter, Decorator, Proxy)
+- Behavioral Patterns: manage algorithms and object interactions (e.g., Observer, Strategy)
 
-**Example:**
-```cpp
-Singleton& instance = Singleton::getInstance();
-instance.doSomething();
-```
+How to build
 
----
+Each example is a single-file demo that can be compiled independently. From the repository root (PowerShell):
 
-### 2. Factory Pattern
-**Location:** `creational/FactoryPattern/Factory.cpp`
+```powershell
+cd "Design-Patterns\CreationalDesignPatterns\SingletonPattern"
+g++ Singleton.cpp -o Singleton
+.\Singleton.exe
 
-**Purpose:** Provides an interface for creating objects without specifying their exact classes. The factory determines which class to instantiate based on input.
-
-**Key Features:**
-- Abstract base class (Product) defines the interface
-- Concrete product classes implement the interface
-- Factory class handles object creation logic
-- Client doesn't need to know concrete classes
-
-**Use Cases:**
-- UI element creation (buttons, panels, dialogs)
-- Database driver creation
-- Network protocol handlers
-- Document type creation
-
-**Example:**
-```cpp
-std::shared_ptr<Shape> shape = ShapeFactory::createShape("circle");
-shape->draw();
-```
-
----
-
-### 3. Builder Pattern
-**Location:** `creational/BuilderPattern/Builder.cpp`
-
-**Purpose:** Separates the construction of a complex object from its representation. Allows step-by-step construction and provides flexibility in the building process.
-
-**Key Features:**
-- Builder class constructs complex objects step-by-step
-- Method chaining for readable fluent interface
-- Supports optional components and partial construction
-- Optional Director class can manage complex constructions
-- Separates object construction from representation
-
-**Use Cases:**
-- Building complex objects with many optional parameters
-- Constructing UI components with multiple configurations
-- Creating HTTP requests with various options
-- Configuration object creation
-- Document building
-
-**Example:**
-```cpp
-House& house = HouseBuilder()
-    .buildFoundation()
-    .buildWalls()
-    .buildRoof()
-    .getHouse();
-```
-
----
-
-## Pattern Comparison
-
-| Pattern | Purpose | Complexity | Flexibility |
-|---------|---------|-----------|------------|
-| Singleton | Single instance access | Low | Low |
-| Factory | Object creation | Low-Medium | Medium |
-| Builder | Complex object construction | Medium | High |
-
----
-
-## Compilation
-
-Each pattern file can be compiled independently:
-
-```bash
-# Singleton
-cd creational/SingletonPattern
-g++ singleton.cpp -o singleton
-./singleton
-
-# Factory
-cd creational/FactoryPattern
+cd "..\FactoryPattern"
 g++ Factory.cpp -o Factory
-./Factory
+.\Factory.exe
 
-# Builder
-cd creational/BuilderPattern
-g++ Builder.cpp -o Builder
-./Builder
+cd "..\..\StructuralDesignPatterns\DecoratorPattern"
+g++ Decorator.cpp -o Decorator
+.\Decorator.exe
+
+cd "..\AdapterPattern"
+g++ Adapter.cpp -o Adapter
+.\Adapter.exe
+
+cd "..\ProxyPattern"
+g++ Proxy.cpp -o Proxy
+.\Proxy.exe
+
+cd "..\..\BehavioralDesignPatterns\ObserverPattern"
+g++ Observer.cpp -o Observer
+.\Observer.exe
+
+cd "..\StrategyPattern"
+g++ Strategy.cpp -o Strategy
+.\Strategy.exe
 ```
 
----
+Notes
+
+- The project includes a workspace `.clang-format` and `.vscode/settings.json` to enable automatic formatting in VS Code (install `clang-format` and the Microsoft C/C++ extension).
+- Examples are intentionally simple; if you want, I can split code into headers/sources, add a `CMakeLists.txt`, or add more patterns.
+
+Enjoy exploring the patterns — tell me if you'd like a build script or CMake support added.
 
 ## Design Pattern Categories
 
